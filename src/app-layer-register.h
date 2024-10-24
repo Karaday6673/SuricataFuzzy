@@ -25,6 +25,7 @@
 #define SURICATA_APP_LAYER_REGISTER_H
 
 #include "app-layer-detect-proto.h"
+#include "app-layer-ext.h"
 
 typedef struct AppLayerParser {
     const char *name;
@@ -49,12 +50,10 @@ typedef struct AppLayerParser {
 
     const int complete_ts;
     const int complete_tc;
-    int (*StateGetProgress)(void *alstate, uint8_t direction);
+    SCAppLayerStateGetProgressFn StateGetProgress;
 
-    int (*StateGetEventInfo)(const char *event_name,
-                             int *event_id, AppLayerEventType *event_type);
-    int (*StateGetEventInfoById)(int event_id, const char **event_name,
-                                  AppLayerEventType *event_type);
+    SCAppLayerStateGetEventInfoFn StateGetEventInfo;
+    SCAppLayerStateGetEventInfoByIdFn StateGetEventInfoById;
 
     void *(*LocalStorageAlloc)(void);
     void (*LocalStorageFree)(void *);
