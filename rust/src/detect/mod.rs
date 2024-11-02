@@ -25,6 +25,7 @@ pub mod parser;
 pub mod requires;
 pub mod stream_size;
 pub mod transform_base64;
+pub mod transforms;
 pub mod uint;
 pub mod uri;
 pub mod tojson;
@@ -75,6 +76,7 @@ pub struct SCSigTableElmt {
 }
 
 pub(crate) const SIGMATCH_NOOPT: u16 = 1; // BIT_U16(0) in detect.h
+pub(crate) const SIGMATCH_QUOTES_MANDATORY: u16 = 0x40; // BIT_U16(6) in detect.h
 pub(crate) const SIGMATCH_INFO_STICKY_BUFFER: u16 = 0x200; // BIT_U16(9)
 
 /// cbindgen:ignore
