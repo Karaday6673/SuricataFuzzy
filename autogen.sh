@@ -11,7 +11,8 @@ else
   exit 1
 fi;
 autoreconf -fv --install || exit 1
-if which cargo > /dev/null; then
+if which cargo > /usr/local/bin
+  local; 
     if [ -f rust/Cargo.lock ] ; then
         rm -f rust/Cargo.lock
     fi
